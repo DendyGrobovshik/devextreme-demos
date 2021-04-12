@@ -145,6 +145,16 @@ var dataSet = [{
   startDate: new Date("2021-02-02T04:15:00.000Z"),
   endDate: new Date("2021-02-02T06:45:00.000Z"),
   humanId: 1
+},{
+  text: "Rollout of New Website and Marketing Brochures",
+  startDate: new Date("2021-02-02T14:0z:00.000Z"),
+  endDate: new Date("2021-02-02T16:45:00.000Z"),
+  humanId: 1
+},{
+  text: "Rollout of New Website and Marketing Brochures",
+  startDate: new Date("2021-02-02T16:15:00.000Z"),
+  endDate: new Date("2021-02-02T06:45:00.000Z"),
+  humanId: 1
 }, {
   text: "Update Sales Strategy Documents",
   startDate: new Date("2021-02-02T08:00:00.000Z"),
@@ -173,7 +183,7 @@ var dataSet = [{
 }, {
   text: "Submit Questions Regarding New NDA",
   startDate: new Date("2021-02-04T14:00:00.000Z"),
-  endDate: new Date("2021-02-04T05:30:00.000Z"),
+  endDate: new Date("2021-02-04T16:30:00.000Z"),
   humanId: 0
 }, {
   text: "Submit Signed NDA",
@@ -197,8 +207,13 @@ var dataSet = [{
   humanId: 1
 }, {
   text: "Review Changes to Health Insurance Coverage",
-  startDate: new Date("2021-02-05T10:15:00.000Z"),
-  endDate: new Date("2021-02-05T11:30:00.000Z"),
+  startDate: new Date("2021-02-05T15:15:00.000Z"),
+  endDate: new Date("2021-02-05T16:30:00.000Z"),
+  humanId: 0
+},{
+  text: "Create Report on Customer Feedback",
+  startDate: new Date("2021-02-03T14:00:00.000Z"),
+  endDate: new Date("2021-02-03T15:20:00.000Z"),
   humanId: 0
 }, {
   text: "Review Training Course for any Ommissions",
@@ -413,18 +428,18 @@ function generateAppointments() {
   var resourcesAmount = resources.length;
   for (var resourceId = 0; resourceId < resourcesAmount; resourceId += increment) {
 
-    if (++increment === 4) {
+    if (++increment === 3) {
       increment = 1;
     }
 
     dataSet.forEach(function (item) {
-      var humanId = (item.humanId + resourceId) % resourcesAmount;
-      data.push({
-        text: item.text,
-        startDate: item.startDate,
-        endDate: item.endDate,
-        humanId
-      });
+      var humanId = (item.humanId + resourceId + item.humanId) % resourcesAmount;
+        data.push({
+          text: item.text,
+          startDate: item.startDate,
+          endDate: item.endDate,
+          humanId
+        });
     });
   }
 
